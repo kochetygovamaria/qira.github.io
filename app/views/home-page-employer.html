@@ -1,0 +1,474 @@
+<style>
+  @import "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+
+  .container {
+    margin-top: 20px;
+  }
+
+  .mb20 {
+    margin-bottom: 20px;
+  }
+
+
+  .filter-col {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  hgroup {
+    padding-left: 15px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  hgroup h1 {
+    font: 500 normal 1.625em "Roboto", Arial, Verdana, sans-serif;
+    color: #2a3644;
+    margin-top: 0;
+    line-height: 1.15;
+  }
+
+  hgroup h2.lead {
+    font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
+    color: #2a3644;
+    margin: 0;
+    padding-bottom: 10px;
+  }
+
+  .search-result .thumbnail {
+    border-radius: 0 !important;
+  }
+
+  .search-result:first-child {
+    margin-top: 0 !important;
+  }
+
+  .search-result {
+    margin-top: 20px;
+  }
+
+  .search-result .col-md-2 {
+    border-right: 1px dotted #ccc;
+    min-height: 140px;
+  }
+
+  .search-result ul {
+    padding-left: 0 !important;
+    list-style: none;
+  }
+
+  .search-result ul li {
+    font: 400 normal .85em "Roboto", Arial, Verdana, sans-serif;
+    line-height: 30px;
+  }
+
+  .search-result ul li i {
+    padding-right: 5px;
+  }
+
+  .search-result .col-md-7 {
+    position: relative;
+  }
+
+  .search-result h3 {
+    font: 500 normal 1.375em "Roboto", Arial, Verdana, sans-serif;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .search-result h3>a,
+  .search-result i {
+    color: #248dc1 !important;
+  }
+
+  .search-result p {
+    font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
+  }
+
+  .search-result span.plus {
+    position: absolute;
+    right: 0;
+    top: 126px;
+  }
+
+  .search-result span.plus a {
+    background-color: #248dc1;
+    padding: 5px 5px 3px 5px;
+  }
+
+  .search-result span.plus a:hover {
+    background-color: #414141;
+  }
+
+  .search-result span.plus a i {
+    color: #fff !important;
+  }
+
+  .search-result span.border {
+    display: block;
+    width: 97%;
+    margin: 0 15px;
+    border-bottom: 1px dotted #ccc;
+  }
+
+  li.filter-cat {
+    display: inline;
+  }
+
+  li.filter-gen {
+    display: inline;
+  }
+
+  li.filter-exp {
+    display: inline;
+  }
+
+  li.filter-age {
+    display: inline;
+  }
+</style>
+
+<script>
+  function openSolution() {
+
+    if ($(".showMore").css('display') == "none") {
+      $('a#Hire').click(function (evt) {
+        $(".showMore").css("display", "block");
+      });
+    }
+    else {
+      $('a#Hire').click(function (evt) {
+        $(".showMore").css("display", "none");
+      });
+    }
+
+
+  }
+  // Get the modal
+  var modal = document.getElementById('myModal');
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn1");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks the button, open the modal 
+  /*btn.onclick = function() {
+      modal.style.display = "block";
+  }*/
+
+  $(document).ready(function () {
+    $('#datetimepicker').datetimepicker({
+      format: 'YYYY-MM-DD',
+    });
+    $('#datetimepicker1').datetimepicker({
+      format: 'YYYY-MM-DD',
+    });
+  });
+
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+</script>
+
+
+
+<div class="container">
+  <hgroup class="mb20">
+  
+    <h2 class="lead">
+     <a style="float:right;" data-toggle="collapse"  class="advancesearch" data-target="#filter-panel">
+            <span class="glyphicon glyphicon-cog"></span> Advanced Search
+        </a>
+    </h2>
+    <div class="row">
+      </br>
+      <div id="filter-panel" class="collapse filter-panel">
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <form class="form" role="form">
+              <div class="form-group">
+                <div data-target="#filter-category" class="subtitle filter-categories" data-toggle="collapse" href="#filter-category">Category</div>
+                <div class="collapse filter-category" id="filter-category">
+                  <ul class="list-filter-category">
+                    <li class="filter-cat">
+                      <input type="checkbox" name="filterCat-bartender" value="Bartender" ng-true-value="'Bartender'" ng-model="filterObj.cat[0]">&nbsp;&nbsp;Bartender
+                   &emsp; </li>
+
+
+                    <li class="filter-cat">
+                      <input type="checkbox" name="filterCat-waitress" value="Waitress" class="filter-category" ng-model="filterObj.cat[1]" ng-true-value="'Waitress'">&nbsp;&nbsp;Waitress
+                   &emsp; </li>
+                    <li class="filter-cat">
+                      <input type="checkbox" name="filterCat-DJ" value="DJ" class="filter-category" ng-model="filterObj.cat[2]" ng-true-value="'DJ'">&nbsp;&nbsp;DJ
+                   &emsp; </li>
+                    <li class="filter-cat">
+                      <input type="checkbox" name="filterCat-security" value="Security Agent" class="filter-category" ng-true-value="'Security Agent'"
+                        ng-model="filterObj.cat[3]">&nbsp;&nbsp;Security Agent
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="form-group">
+
+                <div class="subtitle filter-categories" data-toggle="collapse" href="#filter-experience">Experience</div>
+                <div class=" collapse filter-experience" id="filter-experience">
+                  <ul class="list-filter-experience">
+                    <li class="filter-exp">
+                      <input type="checkbox" ng-true-value="'No experience'" ng-model="filterObj.exp[0]" class="experience-radio">
+                      <span>No experience</span> &emsp;
+                    </li>
+                    <li class="filter-exp">
+                      <input type="checkbox" ng-true-value="'Less than 2 years'" ng-model="filterObj.exp[1]" class="experience-radio">
+                      <span>Less than 2 years</span>&emsp;
+                    </li>
+                    <li class="filter-exp">
+                      <input type="checkbox" ng-true-value="'More than 2 years'" ng-model="filterObj.exp[2]" class="experience-radio">
+                      <span>More than 2 years</span>&emsp;
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- form group [rows] -->
+
+              </div>
+          </div>
+
+          <!-- form group [search] -->
+
+          <!-- form group [order by] -->
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+   
+</div>
+</hgroup>
+
+<section class="col-xs-12 col-sm-6 col-md-12">
+  <div ng-if="filtered.length == 0">
+     <article class="search-result row" ng-repeat="worker in workers" ng-init="worker.fullName =  (worker.firstName + ' ' + worker.lastName)">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <a data-toggle="modal" ng-click="modalDisp(worker.id)" data-target="#myModal" title="Lorem ipsum" style=" cursor: pointer;" class="thumbnail"><img ng-src="{{worker.profilePicture}}" style="width:160px; height:160px;" alt="Lorem ipsum" />
+      
+
+      </a>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-2">
+      <ul class="meta-search">
+        <li> <h6 id="worker-name"> {{worker.firstName}} {{worker.lastName}}</h6></li>
+        <li> <p id="worker-header">{{worker.category}}</p></li>
+        <li><p><strong>${{worker.salary}}/hour</strong></p></li>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+      <h3>Description</h3>
+      <p>{{worker.description}}</p>
+      
+    </div>
+    <span class="clearfix borda"></span>
+  </article>
+
+
+
+</section>
+  </div>
+  <article class="search-result row" ng-repeat="worker in workers |filter:filterFunc as filtered" ng-init="worker.fullName =  (worker.firstName + ' ' + worker.lastName)">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <a data-toggle="modal" ng-click="modalDisp(worker.id)" data-target="#myModal" title="Lorem ipsum" class="thumbnail" style=" cursor: pointer;"><img ng-src="{{worker.profilePicture}}" alt="Lorem ipsum" />
+     
+
+      </a>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-2">
+      <ul class="meta-search">
+        <li>  <h6 id="worker-name"> {{worker.firstName}} {{worker.lastName}}</h6></li>
+        <li> <p id="worker-header">{{worker.category}}</p></li>
+        <li><p><strong>${{worker.salary}}/hour</strong></p></li>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+      <h3>Description</h3>
+      <p>{{worker.description}}</p>
+      
+    </div>
+    <span class="clearfix borda"></span>
+  </article>
+
+
+
+</section>
+<!--MODAL-->
+<div class="modal " id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"> Worker Info</h4>
+      </div>
+      <div class="modal-body" ng-repeat="worker in workers |filter:{ id:currentSelected} ">
+
+
+        <!-- Modal body-->
+
+        <div class="row">
+          <div class="col-sm-6"> <img class="profile-picture" ng-src="{{worker.profilePicture}}">
+
+            <div class="profile-verified">
+              <ul class="verified-list">
+
+                <li class="is-verified verified-item verified-payment" id="tooltip"><span class="Icon">
+                    <svg class="Icon-image" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M20.447 2.106c-.34-.17-.744-.133-1.047.095L16 4.75 12.6 2.2c-.355-.266-.844-.266-1.2 0L8 4.75 4.6 2.2c-.304-.227-.708-.264-1.047-.094C3.213 2.276 3 2.622 3 3v9c0 5.524 8.2 9.72 8.55 9.894l.45.227.45-.226C12.8 21.72 21 17.524 21 12V3c0-.378-.214-.724-.553-.894zM15 10h-3.5c-.275 0-.5.225-.5.5 0 .276.225.5.5.5h1c1.38 0 2.5 1.122 2.5 2.5 0 1.208-.86 2.22-2 2.45V17h-2v-1H9v-2h3.5c.276 0 .5-.224.5-.5 0-.275-.224-.5-.5-.5h-1C10.122 13 9 11.878 9 10.5c0-1.206.86-2.217 2-2.45V7h2v1h2v2z">
+                    </path>
+                   </svg>
+                   </span>
+                  <span class="tooltiptext">Payment Verified</span>
+                </li>
+                <li class="is-verified verified-item verified-profile" id="tooltip1"><span class="Icon"><svg class="Icon-image" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M12.002 12.006c2.206 0 4-1.795 4-4s-1.794-4-4-4-4 1.795-4 4 1.795 4 4 4zM12.002 13.006c-4.71 0-8 2.467-8 6v1h16v-1c0-3.533-3.29-6-8-6z"></path>
+                  </svg>
+                    </span>
+                  <span class="tooltiptext1">Completed Profile 100%</span>
+                </li>
+                <li class="is-verified verified-item verified-phone" id="tooltip2"><span class="Icon"><svg class="Icon-image" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M15,21h5a1,1,0,0,0,1-1V16a1,1,0,0,0-1-1H16a1,1,0,0,0-1,1v1a6.91,6.91,0,0,1-7-7H9a1,1,0,0,0,1-1V5A1,1,0,0,0,9,4H5A1,1,0,0,0,4,5v5A11,11,0,0,0,15,21Z"></path>
+                    </svg>
+                      </span>
+                  <span class="tooltiptext2">Phone Verified</span>
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
+          <div class="col-sm-6">
+
+
+            <div class="profile-name">
+              <p>{{worker.firstName}} {{worker.lastName}}</p>
+            </div>
+            <!--  <div class="profile-degree" ng-if="worker.graduated != 'None'"><p>Graduated from {{worker.graduated}}</p></div> -->
+            <div class="profile-position"><span style="display:inline-block;"><p>{{worker.category}} :</p></span>
+              <span class="hourly-rate-value" style="display:inline-block; margin-left:2%;">
+                                        
+                                        <p >
+                                            {{worker.salary}}  USD/hr</p>
+                                        
+                                    </span>
+            </div>
+            <!--   <div class=profile-position>
+            <ul class="verified-list">
+              <li class="is-verified" style="color:green;">
+                <span class="item-stats-value">98%</span> <span class="item-stats-name">Satisfaction</span> &nbsp;
+                <li class="is-verified" style="color:green;">
+                  <span class="item-stats-value">16%</span> <span class="item-stats-name">Repeat Hire</span>
+
+
+                </li>
+            </ul>
+
+          </div> -->
+            <div class="Rating Rating--labeled profile-user-rating" data-toggle="tooltip" data-placement="bottom" data-original-title="Average rating for all completed projects"
+              data-star_rating="4.9">
+              <span style="display:inline-block">
+                <div class="rating">
+                  <span class="rating-star empty-star"></span>
+              <span class="rating-star full-star"></span>
+              <span class="rating-star full-star"></span>
+              <span class="rating-star full-star"></span>
+              <span class="rating-star full-star"></span>
+
+            </div>
+            </span>
+            <span class="Rating-review">
+                                417 reviews
+                </span>
+          </div>
+
+
+        </div>
+        <!-- ROW END -->
+      </div>
+
+      <div clas="profile-main-block">
+
+        <div class="profile-pitch">
+          <h5><strong>Why you should hire {{worker.firstName}}</strong></h5>
+          <span>
+                     {{worker.description}}
+                    </span>
+
+        </div>
+      </div>
+      <hr>
+      <h5 class="HireNow" style="text-align:center;"><strong><a  id="Hire" onClick = "openSolution();" > Hire Now</a></strong>
+      </h5>
+      <div tabindex="-1" role="dialog" class="showMore" style="display:none;" aria-labelledby="myModalLabel">
+        <div class="form-group">
+          <label for="">Description</label>
+          <textarea class="form-control" rows="5" id="comment" placeholder="About this mission"></textarea>
+        </div>
+
+        <label for="">Location</label>
+
+        <select class="form-control" id="sel1">
+                   <option>New York</option>
+                   <option>Boston</option>
+        
+                   </select>
+
+
+        <div id="newContract" style="margin-top:5%;margin-bottom:10%;">
+
+          <div class="form-group">
+            <label for="time">Time: </label>
+            <div class='input-group date' id='datetimepicker'>
+              <input name="startTime" class="form-control" ng-model="startTime" id="startTime" required ng-pattern="/\d{2}/\d{2}/\d{4} \d{2}:\d{2}/"
+                ng-blur="updateTime()" />
+              <span class="input-group-addon">
+							    <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+
+            <label for="time">Time: </label>
+            <div class='input-group date' id='datetimepicker1'>
+              <input name="endTime" class="form-control" ng-model="endTime" id="endTime" required ng-pattern="/\d{2}/\d{2}/\d{4} \d{2}:\d{2}/"
+                ng-blur="updateTime()" />
+              <span class="input-group-addon">
+						            <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+
+          </div>
+
+          <button class="btn btn-info btn-sm " class="close" <button type="button" id="myBtn{{currentSelected}}" ng-disabled="startTime=='' || endTime =='' || startTime==undefined || endTime ==undefined"
+            ng-click="addItem(currentSelected)" class="close" data-dismiss="modal" style="background-color:#61c46e;color:white;  height: 56px;width: 213px; border: 0;border-radius: 5px;
+    display: block; margin: 25px auto;position: relative;bottom: -20px;"> Send the request</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+</div>

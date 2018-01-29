@@ -1,0 +1,204 @@
+<link href="styles/main.css" rel="stylesheet">
+<script>
+  $(document).ready(function () {
+    $('.page-link').click(function () {
+      event.preventDefault();
+    });
+  });
+
+</script>
+<style>
+  @import "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+
+  .container {
+    margin-top: 20px;
+  }
+
+  .mb20 {
+    margin-bottom: 20px;
+  }
+
+
+  .filter-col {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  hgroup {
+    padding-left: 15px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  hgroup h1 {
+    font: 500 normal 1.625em "Roboto", Arial, Verdana, sans-serif;
+    color: #2a3644;
+    margin-top: 0;
+    line-height: 1.15;
+  }
+
+  hgroup h2.lead {
+    font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
+    color: #2a3644;
+    margin: 0;
+    padding-bottom: 10px;
+  }
+
+  .search-result .thumbnail {
+    border-radius: 0 !important;
+  }
+
+  .search-result:first-child {
+    margin-top: 0 !important;
+  }
+
+  .search-result {
+    margin-top: 20px;
+  }
+
+  .search-result .col-md-2 {
+    border-right: 1px dotted #ccc;
+    min-height: 140px;
+  }
+
+  .search-result ul {
+    padding-left: 0 !important;
+    list-style: none;
+  }
+
+  .search-result ul li {
+    font: 400 normal .85em "Roboto", Arial, Verdana, sans-serif;
+    line-height: 30px;
+  }
+
+  .search-result ul li i {
+    padding-right: 5px;
+  }
+
+  .search-result .col-md-7 {
+    position: relative;
+  }
+
+  .search-result h3 {
+    font: 500 normal 1.375em "Roboto", Arial, Verdana, sans-serif;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .search-result h3>a,
+  .search-result i {
+    color: #248dc1 !important;
+  }
+
+  .search-result p {
+    font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
+  }
+
+  .search-result span.plus {
+    position: absolute;
+    right: 0;
+    top: 126px;
+  }
+
+  .search-result span.plus a {
+    background-color: #248dc1;
+    padding: 5px 5px 3px 5px;
+  }
+
+  .search-result span.plus a:hover {
+    background-color: #414141;
+  }
+
+  .search-result span.plus a i {
+    color: #fff !important;
+  }
+
+  .search-result span.border {
+    display: block;
+    width: 97%;
+    margin: 0 15px;
+    border-bottom: 1px dotted #ccc;
+  }
+  #worker-description {
+    padding-bottom: 0;
+    margin: 0;
+  }
+</style>
+<div class="container">
+   <hgroup class="mb20">
+     </hgroup>
+<section class="col-xs-12 col-sm-6 col-md-12">
+  <article class="search-result row" ng-repeat="worker in workers | filter:{status:'2'}">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <a data-toggle="modal"  data-target="#myModal" title="Lorem ipsum" class="thumbnail"><img ng-src="{{worker.profilePicture}}" alt="Lorem ipsum" />
+      
+
+      </a>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-2">
+      <ul class="meta-search">
+       <li>  <h6 id="worker-name"> {{worker.firstName}} {{worker.lastName}}</h6></li>
+        <li> <p id="worker-header">{{worker.category}}</p></li>
+        <li><p><strong>${{worker.salary}}/hour</strong></p></li>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+      <h3>Description</h3>
+      <p>{{worker.description}}</p>
+      
+    </div>
+    <span class="clearfix borda"></span>
+  </article>
+
+
+
+</section>
+
+</div>
+
+
+
+<!-- <div class="fluid1-container">
+
+
+  <div class="col-md-11 col-md-offset-2 jobpage">
+
+    <div class="search-scroll workers-list">
+      <div ng-repeat="worker in workers | filter:{status:'2'} ">
+
+        <div class="worker-profile">
+          <span id='close' style="float:right;" ng-click="hide(worker.lastName)">x</span>
+          <div class="container">
+
+            <div class="row">
+
+              <div class="col-md-2">
+                <img class="worker-image" ng-src="{{worker.profilePicture}}">
+              </div>
+              <div class="col-md-8">
+
+                <div class="worker-detail">
+
+
+                  <h6 id="worker-name1"> {{worker.firstName}} {{worker.lastName}}</h6>
+                  <p id="worker-header">Position: {{worker.category}}</p>
+                </div>
+              </div>
+
+              <div class="col-md-2 text-right">
+
+                <strong>${{worker.salary}}</strong>/hour</div>
+            </div>
+          </div>
+
+
+          <p id="worker-description" style=" text-align: center;">{{worker.description}}</p>
+
+
+
+        </div>
+        </a>
+      </div>
+    </div>
+
+  </DIV>
+</div> -->

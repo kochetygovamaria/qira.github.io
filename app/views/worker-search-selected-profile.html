@@ -1,0 +1,234 @@
+ <div class="profile-wrapper" style="margin-left:55px; margin-right:0px;">
+     <div class="">
+        <div class="profile-top-background">
+            <span class="age">
+                <span><i class="fa fa-birthday-cake"></i>{{worker.age}}</span>
+            </span>
+        </div>
+        <div class="profile-container">
+                <div class="profile-pic-holder">
+                    <!--<img class="profile-picture">-->
+                    <div class="profile-picture">
+                        <img  class="profile-picture" ng-src="{{worker.profilePicture}}">
+                    </div>
+                </div>
+                <div class="profile-data">
+                    <div class="profile-name">{{worker.firstName}} {{worker.lastName}}</div>
+                    <div class="profile-degree" ng-if="worker.graduated != 'None'">Graduated from {{worker.graduated}}</div>
+                    <div class="profile-position">{{worker.category}} position</div>
+                </div>
+            <div clas="profile-main-block">
+                <div class="profile-feedback-wrapper">
+                    <div class="profile-feedback">
+                        <div>
+                            <h1>{{worker.feedback}}</h1>
+                            <span>Feedbacks</span>
+                        </div>
+                    </div>
+                    <div class="profile-feedback">
+                        <div>
+                            <h1>{{worker.rating}}</h1>
+                            <span>Rating</span>
+                        </div>
+                    </div>
+                    <div class="profile-feedback">
+                        <div>
+                            <h1>{{worker.mission}}</h1>
+                            <span>Missions</span>
+                        </div>
+                    </div>
+                    <div class="profile-feedback">
+                        <div>
+                            <h1>${{worker.salary}}</h1>
+                            <span>Rate/hr</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-pitch">
+                    <h5><strong>Why you should hire {{worker.firstName}}</strong></h5>
+                    <span>
+                     {{worker.description}}
+                    </span>
+                     <div> <span class="view-review" data-toggle="modal" data-target="#reviewModal" style="color: #B80000; font-size:16px; font-weight:bold; padding-bottom:15px;">View Feedbacks</span> </div>
+                </div>
+            </div>
+        </div>
+    
+    
+    <div class="work-and-schedule work">
+        <div class="title"><strong>Work Experience</strong></div>
+        <div class="detail">
+            <table class="detail-table table">
+                <thead class="detail-table-header">
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Duration</th>
+                        <th ng-if="worker.graduated != 'None'">Degree</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{worker.category}}</td>
+                        <td>{{worker.experience}}</td>
+                        <td ng-if="worker.graduated != 'None'">{{worker.graduated}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="work-and-schedule schedule">
+        <div class="title">
+            <strong>Schedule</strong>
+            <br><small>Available {{worker.available.length}} times a week</small>
+        </div>
+        <div class="detail">
+            <table class="detail-table table table-bordered">
+                <tbody>
+                    <tr ng-repeat="available in worker.available">
+                        <td class="dayAvailable">{{available.day}}</td>
+                        <td>{{available.time}}</td>
+                    </tr>
+                   <!-- <tr>
+                        <td class="dayAvailable">Tuesday</td>
+                        <td>Morning, evening</td>
+                    </tr>
+                    <tr>
+                        <td class="dayAvailable">Wednesday</td>
+                        <td>Evening</td>
+                    </tr>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Button trigger modal -->
+    <button type="button" class="schedule-btn" data-toggle="modal" data-target="#myModal">
+        Schedule
+    </button>
+</div>
+    <!--schedule modal-->
+    <div class="modal fade schedule-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header" >
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel" >SEND A JOB OFFER</h4>
+            </div>
+            <div class="modal-body">
+                <div class="hire-text">
+                    <h5>Hire {{worker.firstName}} {{worker.lastName}} at ${{worker.salary}}/hr</h5>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="">Job Title <span style="color: #f00">*</span></label>
+                        <input type="text" class="form-control" placeholder="Brief description">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Description</label>
+                        <textarea placeholder="About this mission"></textarea>
+                    </div>
+                    <div>
+                        <label for="">Location <span style="color: #f00">*</span></label>
+                        <div class="select-box">
+                            <select name="" id="">Choice
+                                <option value="">Ontario</option>
+                                <option value="">Toronto</option>
+                            </select>
+                        </div>
+                    </div>
+                     <div style="padding-top: 15px;">
+                        <div><label for=""><strong>Date and time for this mission</strong></label></div>
+                        <div class="date-time">
+                            <div class="form-group date-time" style="width: 120px;">
+                                <label for="">Date</label>
+                                <div class="input-group date" data-provide="datepicker">
+                                    <input type="text" class="form-control" data-date-format="mm/dd/yyyy" placeholder="Date">
+                                    <div class="input-group-addon">
+                                        <span class="fa fa-calendar" style="margin: 0 auto; padding: 0; color: #000"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group date-time" style="width: 145px; margin: 0 10px;">
+                              <label for="">Time from</label>
+                              <div class="input-group bootstrap-timepicker timepicker">
+                                  <input id="timepicker1" type="text" class="form-control input-small" style="z-index:99999 !important;" placeholder="From">
+                                  <div class="input-group-addon">
+                                      <span class="fa fa-clock-o" style="margin: 0 auto; padding: 0; color: #000"></span>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group date-time" style="width: 145px;">
+                            <label for="">Time to</label>
+                            <div class="input-group bootstrap-timepicker timepicker">
+                                <input id="timepicker2" type="text" class="form-control input-small" style="z-index:99999 !important;" placeholder="To">
+                                <div class="input-group-addon">
+                                    <span class="fa fa-clock-o" style="margin: 0 auto; padding: 0; color: #000"></span>
+                                </div>
+                            </div>
+                          </div>
+                          <div style="padding-top: 30px;">
+                            <button class="add-btn">ADD</button>
+                          </div>
+                        </div><br>
+                        <div class="schedule-detail dates-selection">
+                            <span>Date 27/05/2017, Time 2.00PM - 4.00PM.</span>
+                            <small><a>Delete</a></small>
+                        </div>
+                    </div>
+                </div>
+                <button class="schedule-btn-blue">
+                    Schedule Now
+                </button>
+            </div>
+            </div>
+        </div>
+    </div>
+   </div>
+
+       <div class="modal fade schedule-modal" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">FEEDBACKS<span class="review-count">{{worker.feedback}}</span></h4>
+            </div>
+
+            <div class="modal-body">
+              <div class="review-box" ng-repeat="review in worker.reviews">
+                <div class="review-image"><img src="/images/ladyNew.png" height="80" width="80" alt=""></div>
+                <div class="content">
+                  <h6>{{review.reviewer}}</h6>
+                  <span class="star-rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </span>
+                  <p class="comment">{{review.comment}}
+                  </p>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>-->
+   
+   <script>
+    $(document).ready(function () {
+      console.log('works');
+      $('.datepicker').datepicker();
+      $('#timepicker1').timepicker();
+      $('#timepicker2').timepicker();
+      /*var timepickerInput = document.getElementById('');
+      timepickerInput.addEventListener('click', function (e) {
+        console.log(e.target);
+      })*/
+    })
+  </script>
+  

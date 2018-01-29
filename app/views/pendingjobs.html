@@ -1,0 +1,275 @@
+<link href="styles/main.css" rel="stylesheet">
+<style>
+    .content {
+        overflow: hidden;
+    }
+
+    .nohover {
+
+
+        background-color: white !important;
+    }
+
+    @import "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+
+    .container {
+        margin-top: 20px;
+    }
+
+    li.filter-cat {
+        display: inline;
+    }
+
+    td {
+        padding: 0;
+    }
+
+    .content img {
+
+        float: left;
+    }
+
+    .table thead tr th,
+    .table tbody tr td {
+        font-size: 14px;
+    }
+</style>
+<script>
+    $('#my-works-table').DataTable({
+        responsive: true
+    });
+
+</script>
+<div class="container">
+    <div class="row">
+
+        <div id="exTab2">
+            <ul class="nav nav-tabs">
+                <li>
+                    <a ui-sref="app.currentjobs">Current</a>
+                </li>
+                <li><a class=" navjobs active" ui-sref="app.pendingjobs">Pending</a>
+                </li>
+                <li><a ui-sref="app.historyjobs">History</a>
+                </li>
+                <li style="float:right;"> <a data-toggle="collapse" class="advancesearch" data-target="#filter-panel">
+                 <span class="glyphicon glyphicon-cog"></span> Advanced Search
+                 </a>
+                </li>
+            </ul>
+
+            <hgroup class="mb20">
+
+                <h2 class="lead">
+
+                </h2>
+                <div class="filter">
+                    <!--                                    <div class="block-title">-->
+
+                    <!--                         
+                    <div class="col-md-2">-->
+                    <div id="filter-panel" class="collapse filter-panel">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                                <form class="form" role="form">
+                                    <div class="form-group">
+                                        <div data-target="#filter-category" class="subtitle filter-categories" data-toggle="collapse" href="#filter-category">Category</div>
+                                        <div class="collapse filter-category" id="filter-category">
+                                            <ul class="list-filter-category">
+                                                <li class="filter-cat" ng-repeat="category in categoryGroup">
+                                                    <input type="checkbox" ng-model="useCategory[category]" /> {{category}}
+                                                    &emsp;
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div data-toggle="collapse" data-target="#filter-location" class="subtitle filter-categories" href="#filter-location">Location</div>
+                                        <div id="filter-location" class="collapse filter-location" style="padding:0 15px;">
+                                            <ul class="list-filter-category">
+                                                <li class="filter-cat" ng-repeat="location in locationGroup">
+                                                    <input type="checkbox" ng-model="useLocation[location]" /> {{location}}
+                                                    &emsp;
+
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </hgroup>
+        </div>
+                 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <table id="my-works-table" class="table table-hover" api="api">
+                    <thead>
+
+                    <td>Contract </td>
+                    <td>Full Name </td>
+                    <td>Start Date </td>
+                    <td>End Date </td>
+                    <td>Location </td>
+
+                    </thead>
+                <tbody class="tBody">
+                    <tr class="rowTabnle" ng-repeat-start="a in filteredAppointments" ng-init="a.expanded=$first">
+
+
+
+
+
+
+
+
+                        <td>
+                            <i class=" glyphicon glyphicon-chevron-up " ng-if="a.expanded" ng-click="a.expanded = false"></i>
+                            <i class=" glyphicon glyphicon-chevron-down" ng-if="!a.expanded" ng-click="a.expanded = true"></i> {{a.contract_id}}
+                        </td>
+                            <td>{{a.first_name}} {{a.last_name}}</td>
+
+                                <td>{{a.start_date}}</td>
+                                <td>{{a.end_date}}</td>
+                                <td>{{a.location}}</td>
+                                <td style="display:none;">{{a.month}}</td>
+
+                    </tr>
+
+                    <tr class="nohover" ng-if="a.expanded" ng-repeat-end="">
+                        <td colspan="5">
+                            <div class="col-xs-12 col-sm-12 col-md-3">
+
+
+                                <img class="sc_image" src="images/Marie.jpg" style="width:160px; height:160px;" alt="" />
+
+
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                <ul class="meta-search" style="margin-top:1%;padding-left:0;">
+                                    <li>
+                                        <h6 id="worker-name">{{a.first_name}} {{a.last_name}}
+
+                                    </li>
+
+                                    <li>
+                                        <p id="worker-header"><strong>Tittle:</strong> {{a.title}}</p>
+                                    </li>
+                                    <li>
+                                        <p><strong>Phone:</strong><a style="color:#2b6732;text-decoration:underline;" href="tel:{{a.phone}}">{{a.phone}}</a></p>
+                                    </li>
+                                    <li>
+                                        <p><strong>Email:</strong><a style="color:#2b6732;text-decoration:underline;" target="_blank"
+                                                href="mailto:{{a.Email}}">{{a.Email}}</a></p>
+                                    </li>
+
+                                    <li> <strong>Rate: {{a.wage}}</strong>/hour</li>
+                                </ul>
+                            </div>
+
+                        </div>​
+                            <div class="col-xs-12 col-sm-12 col-md-4" style="margin-top:4%;">
+
+
+                            <button id="myBtn(a.status)" class="btn btn-sm btn-block" ng-click="modalDisp(a.contract_id)" data-toggle="modal" style="background-color:#61c46e;color:white;"
+                                data-target="#myModal">Actions</button>
+                                    <br>
+                            <a ui-sref="app.messagesPage"><button class="btn  btn-sm btn-block" style="background-color:#61c46e;color:white;"><i class="glyphicon glyphicon-envelope"></i> Send</button></a>
+                            </div>
+                        </td>
+                 </tr>
+
+             </tbody>
+             </table>
+<!--Modal-->
+</div>
+</div>
+
+
+<div class="modal " id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Actions</h4>
+            </div>
+            <div class="modal-body">
+
+                <p>Are you sure that you want to cancel the offer?</p>
+
+
+                <input type="button" class="btn btn-sm " id="myBtn{{currentSelected}}" ng-click="testClick(currentSelected)" class="close"
+                    style="background-color:#5dc26a;color:white;" data-dismiss="modal" value="Finish">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</div>
+<script>
+    function myFunction() {
+        document.getElementById("Divrating").style.display = "block";
+        document.getElementById("newContract").style.display = "none";
+    }
+
+    function createContract() {
+        document.getElementById("Divrating").style.display = "none";
+        document.getElementById("newContract").style.display = "block";
+    }
+
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn1");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    /*btn.onclick = function() {
+        modal.style.display = "block";
+    }*/
+
+    $(document).ready(function () {
+        $('#datetimepicker').datetimepicker({
+            format: 'YYYY-MM-DD',
+        });
+        $('#datetimepicker1').datetimepicker({
+            format: 'YYYY-MM-DD',
+        });
+    });
+
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+</script>

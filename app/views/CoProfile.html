@@ -1,0 +1,125 @@
+
+	<main id="profilePage" ng-app="coProfileApp" ng-controller="ProfileEmployerController">
+			<div class="pageTitle"><h1>Company Profile</h1></div>
+			<img src="{{account.picture}}" class="img-circle">
+			<p id="name">{{account.companyName}}</p>
+			<p id="industry">{{account.industry}}</p><br>
+			<button type="button" class="btn btn-basic btn-sm editBtn" data-toggle="modal" data-target="#editModal" ng-click="cancel()" style="">Edit</button>
+			<div class="row">
+				<!--Location-->
+				<div class="col-sm-4">
+					<div class="panel">
+						<div class="panel-heading"><h3>Location</h3></div>
+						<div class="panel-body">
+							<div ng-show="account.address || account.city || account.zipCode || account.state">
+								<h4>Address</h4>
+								<p>{{account.address}}</p>
+								<p>{{account.city + ' ' + account.zipCode + ', ' + account.state}}</p><hr>
+							</div>
+							<div ng-show="account.phone">
+								<h4>Phone </h4>
+								<p>{{account.phone}}</p><hr>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Industry-->
+				<div class="col-sm-4">
+					<div class="panel">
+						<div class="panel-heading"><h3>Industry</h3></div>
+						<div class="panel-body">
+							<div ng-show="account.sirenNumber">	
+								<h4>Siren Number </h4>
+								<p>{{account.sirenNumber}}</p>
+							</div>
+							<div ng-show="account.industry">
+								<h4>Industry Domain</h4>
+								<p>{{account.industry}}</p><hr>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Contact-->
+				<div class="col-sm-4">
+					<div class="panel">
+						<div class="panel-heading"><h3>Contact</h3></div>
+						<div class="panel-body">
+							<div ng-show="account.firstName || account.lastName">
+								<h4>Contact Person </h4>
+								<p>{{fullName()}}</p><hr>
+							</div>
+							<div ng-show="account.email">
+								<h4>Email Address</h4>
+								<p>{{account.email}}</p><hr>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button type="button" class="btn btn-basic btn-sm editBtn" data-toggle="modal" data-target="#editModal" ng-click="cancel()">Edit</button>
+			
+			<!--Modal-->
+			<div id="editModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" style="text-align: center">Edite Profile</h4>
+						</div>
+						<div class="modal-body" style="padding: 0">
+							<form id="profile" name="profileForm">
+								<!--Location-->
+								<div class="input-section">
+									<div class="groupTitle">Location</div><hr>
+									<div class="input-group">
+										<label>Address</label>
+										<input type="text" class="form-control input-lg" name="addressTF" placeholder="Street address" ng-model="tempAccount.address" style="margin-bottom: 10px">
+										<div class="col-lg-6" style="padding: 0"><input type="text" class="form-control input-lg" name="cityTF" placeholder="City" ng-model="tempAccount.city"></div>
+										<div class="col-lg-3"><input type="text" class="form-control input-lg" name="stateTF" placeholder="State" ng-model="tempAccount.state"></div>
+										<div class="col-lg-3" style="padding: 0"><input type="text" class="form-control input-lg" name="zipTF" placeholder="ZIP Code" ng-model="tempAccount.zipCode"></div>
+									</div>
+									<div class="input-group">
+										<label for="phoneTF">Phone Number</label>
+										<input type="text" class="form-control input-lg" name="phoneTF" placeholder="Enter your phone number" ng-model="tempAccount.phone">
+									</div>
+								</div>
+								<!--Industry-->
+								<div class="input-section container-fluid">
+									<div class="groupTitle">Industry</div><hr>
+									<div class="input-group">
+										<label for="industryTF">Industry Domain <span class="glyphicon glyphicon-asterisk required"/></label>
+										<!--<select class="form-control" ng-model="account.experience" ng-options="option for option in experience" style="display:inline"></select>-->
+										<input class="form-control input-lg" list="industries" name="industryTF" ng-model="tempAccount.industry" required>
+										<datalist id="industries"><option ng-repeat="option in industries" value="{{option}}" /></datalist>
+										<!--<input type="text" class="form-control input-lg" name="workExpreienceTF" placeholder="What is your work experience" ng-show="account.experience == 'Other'" ng-model="account.experience">-->
+									</div><span class="required" ng-show="profileForm.industryTF.$invalid">Industry is required</span>
+									<div class="input-group">
+										<label for="sirenNumberTF">Siren Number <span class="glyphicon glyphicon-asterisk required"/></label>
+										<input type="text" class="form-control input-lg" name="sirenNumberTF" placeholder="Enter siren number" ng-model="tempAccount.sirenNumber" required>
+									</div><span class="required" ng-show="profileForm.sirenNumberTF.$invalid">Siren number is required</span>
+								</div>
+								<!--Contact-->
+								<div class="input-section">
+									<div class="groupTitle">Contact Details</div><hr>
+									<div class="input-group">
+										<label for="firstNameTF">First Name <span class="glyphicon glyphicon-asterisk required"/></label>
+										<input type="text" class="form-control input-lg" name="firstNameTF" placeholder="Enter your first name" ng-model="tempAccount.firstName" required>
+									</div><span class="required" ng-show="profileForm.firstNameTF.$invalid">First name is required</span>
+									<div class="input-group">
+										<label for="lastNameTF">Last Name <span class="glyphicon glyphicon-asterisk required"/></label>
+										<input type="text" class="form-control input-lg" name="lastNameTF" placeholder="Enter your last name" ng-model="tempAccount.lastName" required>
+									</div><span class="required" ng-show="profileForm.lastNameTF.$invalid">Last name is required</span>
+									<div class="input-group">
+										<label for="emailTF">Email Address <span class="glyphicon glyphicon-asterisk required"/></label>
+										<input type="email" class="form-control input-lg" name="emailTF" placeholder="Enter your email address" ng-model="tempAccount.email" required>
+									</div><span class="required" ng-show="profileForm.emailTF.$invalid">Valid email is required</span>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" ng-click="save()" style="" ng-disabled="canSave()">Save Changes</button>
+							<button type="button" class="btn btn-warning btn-lg" data-dismiss="modal" ng-click="cancel()" style="margin: 0">Cancel Changes</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>

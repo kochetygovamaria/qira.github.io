@@ -1,0 +1,311 @@
+<!--Latest compiled and minified CSS -->
+<!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">-->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">-->
+<style>
+    .wrapperContainer {
+
+        display: grid;
+
+
+        display: grid;
+    }
+
+    #footer {
+
+        grid-row-end: 3;
+    }
+
+#tooltip11 {
+    position: relative;
+    display: inline-block;
+     /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+#tooltip11 .tooltiptext11 {
+    visibility: hidden;
+     width: 120px;
+    top: 100%;
+    left: 50%; 
+    margin-left: -60px;
+ 
+    color:black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+#tooltip11:hover .tooltiptext11 {
+    visibility: visible;
+}
+
+#tooltip12 {
+    position: relative;
+    display: inline-block;
+     /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+#tooltip12 .tooltiptext12 {
+    visibility: hidden;
+    width: 120px;
+    top: 100%;
+    left: 50%; 
+    margin-left: -60px;
+  
+    color:black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+#tooltip12:hover .tooltiptext12 {
+    visibility: visible;
+}
+
+
+
+#tooltip21 {
+    position: relative;
+    display: inline-block;
+     /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+#tooltip21 .tooltiptext21 {
+    visibility: hidden;
+     width: 120px;
+    top: 100%;
+    left: 50%; 
+    margin-left: -60px;
+
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+#tooltip21:hover .tooltiptext21 {
+    visibility: visible;
+}
+
+
+
+#tooltip31 {
+    position: relative;
+    display: inline-block;
+     /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+#tooltip31 .tooltiptext31 {
+    visibility: hidden;
+    width: 120px;
+    top: 100%;
+    left: 50%; 
+    margin-left: -60px;
+  
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+#tooltip31:hover .tooltiptext31{
+    visibility: visible;
+}
+
+
+
+#tooltip41 {
+    position: relative;
+    display: inline-block;
+     /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+#tooltip41 .tooltiptext41{
+    visibility: hidden;
+     width: 120px;
+    top: 100%;
+    left: 50%; 
+    margin-left: -60px;
+ 
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+#tooltip41:hover .tooltiptext41 {
+    visibility: visible;
+}
+
+
+
+ui-view.ng-enter, [ui-view].ng-enter {
+  animation-duration: 0.5s;
+  animation-name: fadeIn;
+}
+
+ui-view.ng-leave [ui-view].ng-enter {
+  animation-duration: 0.5s;
+  animation-name: fadeOut;
+}
+    /*@import 'bower_components/bootstrap/dist/css/bootstrap.css';*/
+</style>
+
+<script src="scripts/DataModelJS.js"></script>
+<script src="scripts/MessengerJS.js"></script>
+ <script>
+     $(document).ready(function () {
+  $('#pic').click(function() {
+   event.preventDefault();
+   
+  });
+var color = $('#pic').width();
+$(".dropdown-menu").width(color);
+  });
+   /*     function toggleNav() {
+        var state =$('#hamburger').css('visibility')
+        if (state == 'visible'){
+            $('.employer-navbar').toggleClass('nav-collapsed');
+            $('#hamburger').css('visibility','hidden');
+        $('.wrapper').css('margin-left','160px');
+        } else {
+            $('#hamburger').css('visibility','visible');
+            $('.employer-navbar').toggleClass('nav-collapsed');
+            $('.wrapper').css('margin-left','0px');
+        $('.main-content').css('margin-left','65px');
+        }
+        
+        $('.wrapper').css('transition','all 0.5s');
+    }
+
+    function closeNav() {
+        $('.employer-navbar').addClass('nav-collapsed');
+        $('#hamburger').css('visibility','visible');
+        $('.wrapper').css('margin-left','0px');
+        $('.main-content').css('margin-left','65px');
+    } */
+ </script>  
+
+
+
+
+<div class="app-container">
+
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+
+    <nav class="navbar" id="mainpage">
+        
+ <a href="#"> <img class="float-xs-right float-sm-left" style=" margin-top: 0.2%;"  src="images/qira01.png"/></a>
+            
+      
+        
+
+            <ul class="nav navbar-nav navbar-right">
+
+
+                <li class=" icon" ng-if="user.isEmployer"><a ui-sref="app.homepageemployer"><i class="glyphicon glyphicon-home" id="tooltip11" aria-hidden="true"  onclick="toggleNav()"> <span class="nameIcon">Home</span></i></a>
+                  
+                </li>
+                <li class=" icon" ng-if="user.isWorker"><a ui-sref="app.homepageworker"><i class="glyphicon glyphicon-home" id="tooltip11" aria-hidden="true"  onclick="toggleNav()"> <span class="nameIcon">Home</span></i></a>
+                  
+                </li>
+                <li class="icon" ng-if="user.isEmployer"><a ui-sref="app.currentjobs"><i class="glyphicon glyphicon-briefcase" id="tooltip12"  aria-hidden="true" onclick="toggleNav()"><span class="nameIcon">Employees</span>  </i></a>
+               
+                </li>
+                <li class="icon"><a ui-sref="app.messagesPage"><i class="glyphicon glyphicon-envelope" id="tooltip21" aria-hidden="true" onclick="toggleNav()"> <span class="nameIcon">Messages</span>   </i></a></li>
+               
+
+                
+                  
+                <li class="icon"><a ui-sref="app.notifications">  <i class="glyphicon glyphicon-bell" id="tooltip41" aria-hidden="true"> <span class="nameIcon">Notifications</span> </i></a>
+               
+                </li>
+
+                <li class="dropdown">
+                    <ul class="dropdown-menu" style="" role="menu" ng-init="state= user.isEmployer ? 'app.profileEmployer' : 'app.profileworker'">
+                        <li><a ui-sref="app.paymentHistory"><span class="fa fa-credit-card submenu-profile"></span>Payment</a></li>
+                        <li><a ui-sref="app.settings"><span class="fa fa-cogs submenu-profile"></span>Settings</a></li>
+                        <div class="dropdown-divider"></div>
+                        <li><a ui-sref="landing"><span class="fa fa-power-off submenu-profile"></span>Log Out</a>
+                        </li>
+                    </ul>
+                    <a href="" id="pic" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <div class="profile-userpic">
+                            <img src="images/12080057_10206075733424857_1178354056710554146_o.jpg" class="img-responsive" alt="Employer Profile Picture">
+                        </div>
+                        <div class="profile-usertitle-name">Hotel Platza</div>
+                    </a>
+                </li>
+            </ul>
+
+        
+    </nav>
+
+    <div class="wrapper">
+        <div class="container main-content-wrapper">
+            <div class="row">
+                <div class="col-md-12" style="margin:auto;">
+                    <div ui-view="app" id="wrapperContainer"  style='margin-top:35px;'>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+   
+</div>
+<!-- /#page-content-wrapper -->
+
+</div>
+
+
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-route.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-animate.min.js"></script>
+
+<script type="text/ng-template" id="worker-search-selected-profile.html">
+    <!--<pre>testing: {{matches}}</pre>-->
+    <a ui-sref="app.selectedWorker({id: match.model.id, worker: match.model})">
+      <img ng-src="{{match.model.profilePicture}}" width="45"  height="45">
+      <span>{{match.label}}</span>
+  </a>
+</script>

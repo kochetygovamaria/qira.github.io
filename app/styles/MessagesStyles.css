@@ -1,0 +1,263 @@
+@charset "UTF-8";
+
+body, html, main {height: 100%}
+
+main{
+	padding-top: 10px;
+}
+#messagesPage {
+	height: 95%;
+}
+
+.contact-second {
+	color: dimgrey;
+}
+
+#contact-list {
+	overflow-y: auto;
+	min-height: 200px;
+}
+#messagesPage .media a {
+	text-decoration: none;
+}
+#messagesPage .media {
+	padding: 0 10px;
+}
+
+#messagesPage hr {
+	margin: 5px;
+}
+
+#rightPanel {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 95%;
+	min-height: 500px;
+	
+}
+
+#left-panel {
+	display: flex;
+	flex-direction: column;
+	background-color:white;
+	float: left;
+	width: 300px;
+	height: 95%;
+	min-height: 500px;
+    border: 1px solid lightgray;
+	margin-right: 20px;
+	
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+#top-panel {
+	flex: 0 0 auto;
+	
+
+	background-color:white;
+	border: 1px solid lightgray;
+	height: 100px;
+	padding: 12px 10px 0px 20px;
+}
+
+#bottom-panel {
+	flex: 1 1 auto;
+	
+	background-color:white;
+	border: 1px solid lightgray;
+	
+	padding: 12px 0px 0px 20px;
+	overflow: auto;
+}
+
+#search-contacts {
+	margin: 10px 0;
+}
+
+#send-panel{
+	flex: 0 0 auto;
+/*	height: 55px;*/
+	display: flex;
+	flex-direction:row;
+	
+	background-color:white;
+	border: 1px solid lightgray;
+	padding: 10px;
+}
+
+#sendMessageTF {
+	flex: 1 1 auto;
+	height: 100%;
+	border-radius: 5px 0 0 5px;
+}
+
+#sendBtn {
+	flex: 0 0 auto;
+	width: 80px;
+	height: 100%;
+	border-radius: 0 5px 5px 0;
+}
+
+#send-panel-mini {
+	display: inline-flex;
+	position: absolute;
+	width: 100%;
+	height: 55px;
+	bottom: 0;
+	padding: 10px;
+  	background-color: rgba(0, 0, 0, .1);
+	border-top: solid crimson;
+}
+
+#sendMessageTF-Mini {
+	width: 80%;
+	height: 100%;
+	border-radius: 5px 0 0 5px;
+}
+
+#sendBtn-Mini {
+	width: 20%;
+	border-radius: 0 5px 5px 0;
+	height: 100%;
+	padding: 5px;
+
+}
+#contact-list .media-heading {
+	    font-family: Source Sans Pro,Helvetica,Arial,sans-serif,Hiragino Kaku Gothic Pro,Meiryo,Hiragino Sans GB W3,Noto Naskh Arabic,Droid Arabic Naskh,Geeza Pro,Simplified Arabic,Noto Sans Thai,Thonburi,Dokchampa,Droid Sans Thai,Droid Sans Fallback,-apple-system,'.SFNSDisplay-Regular',Heiti SC,Microsoft Yahei,Segoe UI;
+    line-height: 20px;
+    font-weight: 600;
+    color: rgba(0,0,0,.85);
+    font-size: 15px;
+    margin: 0;
+}
+
+#messagesPage .media-body {
+	color: dimgrey;
+	width: auto;
+}
+
+#messagesPage .media-object {
+	border: 2px solid rgba(110,110,110,1.00);
+	width:50px;
+}
+
+#messagesPage .media-sellectedObject {
+	border: 2px solid #0083ff;
+	width:50px;
+/*	box-shadow: 2px 0px 3px 0 rgba(0, 0, 0, 0.2), 2px 0 4px 0 rgba(0, 0, 0, 0.19);*/
+}
+
+#top-panel .media-object {
+	border: 4px solid #102331;
+	width:70px;
+}
+
+#top-panel .media-heading {
+	    font-family: Source Sans Pro,Helvetica,Arial,sans-serif,Hiragino Kaku Gothic Pro,Meiryo,Hiragino Sans GB W3,Noto Naskh Arabic,Droid Arabic Naskh,Geeza Pro,Simplified Arabic,Noto Sans Thai,Thonburi,Dokchampa,Droid Sans Thai,Droid Sans Fallback,-apple-system,'.SFNSDisplay-Regular',Heiti SC,Microsoft Yahei,Segoe UI;
+    line-height: 20px;
+    font-weight: 600;
+    color: rgba(0,0,0,.85);
+    font-size: 20px;
+    margin: 0;
+}
+
+#top-panel .media-body {
+	padding-top: 16px;
+	padding-left: 20px;
+	color: crimson;
+	font-size: 120%;
+}
+
+#bottom-panel p {
+	text-align: center;
+	font-size: 80%;
+	color : dimgray;
+}
+
+#messagesPage .rightAlignment {
+	float: right;
+}
+
+#messagesPage .rightMessage{
+	text-align:right;
+	background-color:#61c46e;
+	border-radius: 14px 15px 0 15px;
+	color:white;
+	padding: 14px 20px 10px 20px;
+
+}
+
+#messagesPage .leftMessage {
+	background-color: #f1f0f0;
+	color:rgba(36,35,35,1.00);
+	padding: 14px 20px 10px 20px;
+	border-radius: 15px 15px 15px 0;
+	
+	
+}
+
+.glyphicon-trash {
+	padding: 10px 30px 10px 20px;
+	color: crimson;
+	font-size: 120%;
+}
+
+#searchTF {
+	height: 38px;
+}
+#search-contacts .input-group-addon{
+	height: 38px;
+}
+
+#left-panel h3 {
+	
+}
+.msg-search-form__title-bar-title {
+    height: 36px;
+    position: relative;
+    top: 0;
+}
+
+	.visually-hidden {
+    display: block;
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.msg-search-form__search-field[type=search] {
+   border: none;
+     padding: 0 32PX; 
+}
+.msg-search-form__search-field[type=search] {
+    background: #fff;
+    height: 100%;
+   
+    -webkit-appearance: none;
+    border: none;
+    
+    border-radius: 0;
+    font-size: 1.6rem;
+    z-index: 0;
+	position: relative;
+	width: 80%;
+}
+.msg-search-form__search-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+}
+
+
+.svg-icon-wrap {
+    display: inline-block;
+}
